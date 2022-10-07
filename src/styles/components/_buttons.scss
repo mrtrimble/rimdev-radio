@@ -1,0 +1,13 @@
+.button{
+  padding-inline: 0.75rem;
+  font-size: var(--step--1);
+  padding-block: 0.5rem;
+  border-radius: 0.75rem;
+  text-align: center;
+  width: fit-content;
+  text-decoration: none;
+  box-shadow:
+  12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+  100px 100px 80px rgba(0, 0, 0, 0.07)
+;
+}

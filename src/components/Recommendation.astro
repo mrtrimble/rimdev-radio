@@ -1,0 +1,26 @@
+---
+export interface Props {
+  recommendation: {
+    name: string;
+    art: string;
+    band: string;
+    title: string;
+  };
+}
+
+const { recommendation } = Astro.props;
+---
+
+<li class="recommendation">
+  <figure class="recommendation-art">
+    <img src={recommendation.art} alt="In The Aeroplane Over The Sea" />
+  </figure>
+  <div>
+    <p>
+      <strong>{recommendation.name}</strong> recommended <strong
+        ><a href="/">{recommendation.title}</a>
+      </strong>
+      by <strong><a href="/">{recommendation.band}</a></strong>
+    </p>
+  </div>
+</li>
