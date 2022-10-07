@@ -7,13 +7,14 @@
   background: var(--primary-color);
   .container {
     display: grid;
-    gap: 1rem;
+    gap: 0.5rem;
     padding-block: 1rem;
     grid-template-areas:
       'header header header header'
       'album album album player';
   }
   h2 {
+    text-transform: uppercase;
     grid-area: header;
     font-size: var(--step-0);
     margin: 0;
@@ -32,6 +33,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  
   figure {
     width: 100px;
     aspect-ratio: 1;
