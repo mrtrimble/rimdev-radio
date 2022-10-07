@@ -1,9 +1,31 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Player from '../components/Player.astro';
+import Recommendation from '../components/Recommendation.astro';
+
+const recommendation = {
+  name: 'Ryan',
+  title: 'In The Aeroplane Over The Sea',
+  band: 'Neutral Milk Hotel',
+  art: 'https://upload.wikimedia.org/wikipedia/en/8/83/In_the_aeroplane_over_the_sea_album_cover_copy.jpg',
+};
 ---
 
 <Layout title="RIMdev Radio">
-
-	<Player />
+  <section class="recommendations">
+    <div class="container">
+      <header>
+        <h2>Team Recommendations</h2>
+        <a class="button" href="/">Recommend a Song</a>
+      </header>
+      <ul>
+        <Recommendation recommendation={recommendation} />
+        <Recommendation recommendation={recommendation} />
+        <Recommendation recommendation={recommendation} />
+        <Recommendation recommendation={recommendation} />
+        <Recommendation recommendation={recommendation} />
+      </ul>
+    </div>
+  </section>
+  <Player />
 </Layout>

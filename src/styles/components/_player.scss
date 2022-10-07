@@ -1,4 +1,4 @@
-@import '../mixins/index';
+@import "../mixins/index";
 
 .now-playing {
   position: fixed;
@@ -10,8 +10,8 @@
     gap: 0.5rem;
     padding-block: 1rem;
     grid-template-areas:
-      'header header header header'
-      'album album album player';
+      "header header header header"
+      "album album album player";
   }
   h2 {
     text-transform: uppercase;
@@ -33,12 +33,16 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  
+
   figure {
     width: 100px;
     aspect-ratio: 1;
-    box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02), 6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028), 12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
-      22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042), 41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05), 100px 100px 80px rgba(0, 0, 0, 0.07);
+    box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+      6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+      12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+      22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+      41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+      100px 100px 80px rgba(0, 0, 0, 0.07);
     img {
       height: 100%;
       width: 100%;
@@ -49,9 +53,9 @@
     font-weight: 900;
   }
 
-  a{
+  a {
     text-decoration: none;
-    &:hover{
+    &:hover {
       text-decoration: underline;
     }
   }
@@ -62,7 +66,9 @@
   align-items: center;
   gap: 0.5rem;
 
-  button{
+  button {
+    background: none;
+    border: none;
     font-size: var(--step--1);
   }
 }
