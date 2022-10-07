@@ -1,0 +1,22 @@
+@use "sass:meta";
+
+@layer reset, typography, components, theme;
+
+@layer reset {
+  @include meta.load-css('_reset.scss');
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Figtree:wght@400;700;900&display=swap")
+layer(typography);
+
+@layer typography {
+  @include meta.load-css('_typography.scss');
+}
+
+@layer components {
+  @include meta.load-css('components');
+}
+
+@layer theme {
+  @include meta.load-css('_theme.scss');
+}

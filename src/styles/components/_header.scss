@@ -1,0 +1,14 @@
+@import '../mixins/index';
+
+header[role="banner"]{
+  @include stack;
+  padding-block:1rem;
+  display: grid;
+  place-content: center;
+  svg{
+    margin-inline: auto;
+  }
+  h1{
+    text-transform: uppercase;
+  }
+}

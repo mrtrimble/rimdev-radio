@@ -1,0 +1,9 @@
+@mixin stack {
+  > * {
+    margin: 0;
+    padding: 0;
+  }
+  > * + * {
+    margin-block-start: 1rem;
+  }
+}
