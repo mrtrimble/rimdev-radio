@@ -3,6 +3,7 @@ import Auth from '../../components/Auth.vue';
 
 const spotifyClientId = import.meta.env.SPOTIFY_CLIENT_ID;
 const spotifyClientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
+const mode = import.meta.env.MODE;
 
 const scope = 'streaming \
                user-read-email \
@@ -20,12 +21,13 @@ const randomString = (length) => {
 };
 
 const state = randomString(16);
+const redirectUri = mode === 'DEV' ? 'http://localhost:3000/auth/callback' : 'https://rimdev-radio.netlify.app/auth/callback';
 
 const auth_query_parameters = new URLSearchParams({
   response_type: 'code',
   client_id: spotifyClientId,
   scope: scope,
-  redirect_uri: 'http://localhost:3000/auth/callback',
+  redirect_uri: redirectUri,
   state: state,
 });
 ---
