@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Player from '../components/Player.astro';
+import RecommendButton from '../components/RecommendButton.vue';
 import Recommendation from '../components/Recommendation.astro';
 import { createClient } from '@supabase/supabase-js';
 
@@ -16,7 +17,7 @@ let { data: recommendations, error } = await supabase.from('recommendations').se
     <div class="container">
       <header>
         <h2>Team Recommendations</h2>
-        <a class="button" href="/recommend">Recommend a Song</a>
+        <RecommendButton client:load />
       </header>
       <ul>
         {
@@ -28,5 +29,5 @@ let { data: recommendations, error } = await supabase.from('recommendations').se
       </ul>
     </div>
   </section>
-  <Player />
+  <!-- <Player /> -->
 </Layout>

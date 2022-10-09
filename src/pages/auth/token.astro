@@ -1,0 +1,13 @@
+---
+import Token from '../../components/Token.vue';
+const spotifyClientId = import.meta.env.SPOTIFY_CLIENT_ID;
+const spotifyClientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
+const mode = import.meta.env.MODE;
+---
+
+<h1>Getting token!</h1>
+<Token 
+  clientId={spotifyClientId} 
+  clientSecret={spotifyClientSecret}
+  mode={mode} 
+  client:idle />

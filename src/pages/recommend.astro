@@ -6,6 +6,8 @@ import RecommendForm from '../components/RecommendForm.vue';
 const supabaseKey = import.meta.env.SUPABASE_KEY;
 const spotifyClientId = import.meta.env.SPOTIFY_CLIENT_ID;
 const spotifyClientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
+const playlistId = import.meta.env.PLAYLIST_ID;
+
 let accessToken = null;
 const authParameters = {
   method: 'POST',
@@ -31,7 +33,8 @@ await fetch('https://accounts.spotify.com/api/token', authParameters)
         clientId={spotifyClientId} 
         clientSecret={spotifyClientSecret} 
         supabaseKey={supabaseKey} 
-        client:idle 
+        playlistId={playlistId}
+        client:load
       />
     </div>
   </section>
