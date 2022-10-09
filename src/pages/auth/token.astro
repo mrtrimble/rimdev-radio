@@ -1,0 +1,10 @@
+---
+import Token from '../../components/Token.vue';
+const supabaseKey = import.meta.env.SUPABASE_KEY;
+const spotifyClientId = import.meta.env.SPOTIFY_CLIENT_ID;
+const spotifyClientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
+const playlistId = import.meta.env.PLAYLIST_ID;
+---
+
+<h1>Getting token!</h1>
+<Token clientId={spotifyClientId} clientSecret={spotifyClientSecret} client:load />

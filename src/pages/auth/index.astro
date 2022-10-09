@@ -6,7 +6,8 @@ const spotifyClientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
 
 const scope = 'streaming \
                user-read-email \
-               user-read-private';
+               user-read-private \
+               playlist-modify-public';
 
 const randomString = (length) => {
   let text = '';

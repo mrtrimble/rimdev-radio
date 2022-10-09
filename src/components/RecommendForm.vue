@@ -1,15 +1,21 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = "https://italxwakbpmnxjmkbptj.supabase.co";
 const supabase = createClient(supabaseUrl, props.supabaseKey);
+const oauthToken = ref(null);
+onMounted(() => {
+  oauthToken.value = localStorage.getItem("oauthToken");
+})
+console.log({oauthToken});
 
 const props = defineProps({
   clientId: String,
   clientSecret: String,
   supabaseKey: String,
   accessToken: String,
+  playlistId: String,
 });
 
 const teamMember = ref(null);
@@ -22,7 +28,6 @@ const handleSearch = () => {
   endpoint.searchParams.append("query", search.value);
   endpoint.searchParams.append("type", "track");
   endpoint.searchParams.append("market", "US");
-  console.log(endpoint.href);
   if (props.accessToken) searchSpotifyApi(endpoint.href);
 };
 
@@ -36,7 +41,6 @@ const searchSpotifyApi = async (url) => {
   })
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       options.value = [...data.tracks.items];
     })
     .catch((err) => console.log(err));
@@ -50,7 +54,6 @@ const handleSubmit = async (event) => {
   event.preventDefault();
   if (!teamMember.value && !option.value && !search.value) return;
 
-  console.log(option.value)
   const recommendation = {
     name: teamMember.value,
     track: option.value.name,
@@ -59,12 +62,27 @@ const handleSubmit = async (event) => {
     album_link: option.value.album.external_urls.spotify,
     album_art: option.value.album.images[1].url,
     track_link: option.value.external_urls.spotify,
-    band_link: option.value.artists[0].external_urls.spotify
+    band_link: option.value.artists[0].external_urls.spotify,
+    uri: option.value.uri,
   };
+
+  const endpoint = new URL(
+    `https://api.spotify.com/v1/playlists/${props.playlistId}/tracks`
+  );
+  endpoint.searchParams.append("uris", recommendation.uri);
+
+  await fetch(endpoint.href, {
+    method: "POST",
+    headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${oauthToken.value}`,
+    },
+  });
 
   await supabase
     .from("recommendations")
-    .insert([{...recommendation}])
+    .insert([{ ...recommendation }])
     .then(() => handleReset())
     .catch((err) => console.log(err));
 };
