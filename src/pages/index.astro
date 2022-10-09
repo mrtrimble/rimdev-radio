@@ -19,7 +19,12 @@ let { data: recommendations, error } = await supabase.from('recommendations').se
         <a class="button" href="/recommend">Recommend a Song</a>
       </header>
       <ul>
-        {recommendations.reverse().map((rec) => <Recommendation recommendation={rec} />)}
+        {
+          recommendations
+            .sort((a, b) => a.id - b.id)
+            .reverse()
+            .map((rec) => <Recommendation recommendation={rec} />)
+        }
       </ul>
     </div>
   </section>
