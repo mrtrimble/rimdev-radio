@@ -9,7 +9,7 @@ const props = defineProps({
 
 const base64 = btoa(props.clientId + ":" + props.clientSecret);
 let oauthToken = localStorage.getItem("oauthToken");
-const redirectUri = props.mode
+const redirectUri = props.mode === 'DEV'
   ? "http://localhost:3000/auth/callback"
   : "https://rimdev-radio.netlify.app/auth/callback";
 
