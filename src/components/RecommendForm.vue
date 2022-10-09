@@ -5,10 +5,12 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = "https://italxwakbpmnxjmkbptj.supabase.co";
 const supabase = createClient(supabaseUrl, props.supabaseKey);
 const oauthToken = ref(null);
+const access_token = ref(null);
 onMounted(() => {
   oauthToken.value = localStorage.getItem("oauthToken");
+  access_token.value = localStorage.getItem("access_token");
 })
-console.log({oauthToken});
+console.log({access_token});
 
 const props = defineProps({
   clientId: String,
@@ -28,7 +30,7 @@ const handleSearch = () => {
   endpoint.searchParams.append("query", search.value);
   endpoint.searchParams.append("type", "track");
   endpoint.searchParams.append("market", "US");
-  if (props.accessToken) searchSpotifyApi(endpoint.href);
+  if (access_token.value) searchSpotifyApi(endpoint.href);
 };
 
 const searchSpotifyApi = async (url) => {
@@ -36,7 +38,7 @@ const searchSpotifyApi = async (url) => {
   return await fetch(url, {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${props.accessToken}`,
+      Authorization: `Bearer ${access_token.value}`,
     },
   })
     .then((response) => response.json())
@@ -76,7 +78,7 @@ const handleSubmit = async (event) => {
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${oauthToken.value}`,
+      "Authorization": `Bearer ${access_token.value}`,
     },
   });
 
