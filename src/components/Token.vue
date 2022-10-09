@@ -13,9 +13,6 @@ const endpoint = new URL("https://accounts.spotify.com/api/token");
 
 const authOptions = {
   url: "https://accounts.spotify.com/api/token",
-  // formData: {
-  // },
-  // redirect_uri: "http://localhost:3000/auth/callback",
   body: `grant_type=authorization_code&${oauthToken}&redirect_uri=http://localhost:3000/auth/callback`,
   headers: {
     Authorization: `Basic ${base64}`,
@@ -32,7 +29,12 @@ onMounted(() => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      localStorage.setItem("access_token", data.access_token);
+      const now = new Date();
+      let time = now.getTime();
+      time += 3600 * 1000;
+      now.setTime(time);
+      document.cookie = `access_token=${data.access_token}; expires=${now.toUTCString()}; path=/`;
+      localStorage.clear();
     })
     .then(() => {
       window.location.replace('/');

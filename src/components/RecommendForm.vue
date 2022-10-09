@@ -4,13 +4,10 @@ import { createClient } from "@supabase/supabase-js";
 
 const supabaseUrl = "https://italxwakbpmnxjmkbptj.supabase.co";
 const supabase = createClient(supabaseUrl, props.supabaseKey);
-const oauthToken = ref(null);
 const access_token = ref(null);
 onMounted(() => {
-  oauthToken.value = localStorage.getItem("oauthToken");
-  access_token.value = localStorage.getItem("access_token");
-})
-console.log({access_token});
+  access_token.value = document.cookie.split("=")[1];
+});
 
 const props = defineProps({
   clientId: String,
@@ -76,9 +73,9 @@ const handleSubmit = async (event) => {
   await fetch(endpoint.href, {
     method: "POST",
     headers: {
-      "Accept": "application/json",
+      Accept: "application/json",
       "Content-Type": "application/json",
-      "Authorization": `Bearer ${access_token.value}`,
+      Authorization: `Bearer ${access_token.value}`,
     },
   });
 
