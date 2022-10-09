@@ -1,0 +1,32 @@
+---
+import Auth from '../../components/Auth.vue';
+
+const spotifyClientId = import.meta.env.SPOTIFY_CLIENT_ID;
+const spotifyClientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
+
+const scope = 'streaming \
+               user-read-email \
+               user-read-private';
+
+const randomString = (length) => {
+  let text = '';
+  const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+  for (var i = 0; i < length; i++) {
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return text;
+};
+
+const state = randomString(16);
+
+const auth_query_parameters = new URLSearchParams({
+  response_type: 'code',
+  client_id: spotifyClientId,
+  scope: scope,
+  redirect_uri: 'http://localhost:3000/auth/callback',
+  state: state,
+});
+---
+
+<Auth authQueryParameters={auth_query_parameters.toString()} client:load />

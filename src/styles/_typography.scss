@@ -13,16 +13,18 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Figtree", sans-serif;
-  font-weight: 900;
+  font-family: 'Figtree', sans-serif;
+  font-weight: 700;
 }
 
 h1 {
   font-size: var(--step-5);
+  font-weight: 900;
 }
 
 h2 {
   font-size: var(--step-4);
+  font-weight: 900;
 }
 
 h3 {
@@ -34,6 +36,10 @@ h4 {
 }
 
 body {
-  font-family: "Figtree", sans-serif;
+  font-family: 'Figtree', sans-serif;
   font-size: var(--step-0);
+}
+
+a:not([class]) {
+  color: var(--primary-color);
 }

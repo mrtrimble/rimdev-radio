@@ -5,6 +5,7 @@
   bottom: 0;
   width: 100vw;
   background: var(--primary-color);
+  color: snow;
   .container {
     display: grid;
     gap: 0.5rem;
@@ -27,6 +28,9 @@
   .player {
     grid-area: player;
   }
+  a{
+    color: snow;
+  }
 }
 
 .album {
@@ -35,6 +39,8 @@
   gap: 1rem;
 
   figure {
+    border-radius: 0.65rem;
+    overflow: hidden;
     width: 100px;
     aspect-ratio: 1;
     box-shadow: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
@@ -50,7 +56,7 @@
   }
   &-track {
     font-size: var(--step-0);
-    font-weight: 900;
+    font-weight: 700;
   }
 
   a {

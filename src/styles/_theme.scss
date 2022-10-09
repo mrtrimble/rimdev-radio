@@ -1,33 +1,12 @@
-:root{
-  --primary-color: #31225D;
-  --primary-color-light: #{lighten(#31225D, 10%)};
+:root {
+  --primary-color: #31225d;
+  --primary-color-light: #{lighten(#31225d, 10%)};
 }
 
-body{
+body {
   background-color: snow;
   color: #333;
-}
-
-a{
-  color: var(--primary-color);
-}
-
-.button{
-  background: var(--primary-color);
-  color: white;
-  transition: background 0.25s ease;
-  &:hover{
-    background: var(--primary-color-light);
+  main{
+    padding-block-end: 400px;
   }
-}
-
-.now-playing{
-  color: snow;
-  a{
-    color: snow;
-  }
-}
-
-.recommendation{
-  background: white;
 }

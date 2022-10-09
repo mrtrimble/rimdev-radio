@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import RecommendForm from '../components/RecommendForm.vue';
+
+const supabaseKey = import.meta.env.SUPABASE_KEY;
+const spotifyClientId = import.meta.env.SPOTIFY_CLIENT_ID;
+const spotifyClientSecret = import.meta.env.SPOTIFY_CLIENT_SECRET;
+let accessToken = null;
+const authParameters = {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded',
+  },
+  body: `grant_type=client_credentials&client_id=${spotifyClientId}&client_secret=${spotifyClientSecret}`,
+};
+
+await fetch('https://accounts.spotify.com/api/token', authParameters)
+  .then((result) => result.json())
+  .then((data) => (accessToken = data.access_token));
+---
+
+<Layout title="Recommend a Song">
+  <section class="recommend-song">
+    <div class="container">
+      <header>
+        <h2>Recommend a Song</h2>
+      </header>
+      <RecommendForm 
+        accessToken={accessToken}
+        clientId={spotifyClientId} 
+        clientSecret={spotifyClientSecret} 
+        supabaseKey={supabaseKey} 
+        client:idle 
+      />
+    </div>
+  </section>
+</Layout>

@@ -2,9 +2,13 @@
 export interface Props {
   recommendation: {
     name: string;
-    art: string;
     band: string;
-    title: string;
+    track: string;
+    band_link: string;
+    track_link: string;
+    album: string;
+    album_art: string;
+    album_link: string;
   };
 }
 
@@ -13,14 +17,15 @@ const { recommendation } = Astro.props;
 
 <li class="recommendation">
   <figure class="recommendation-art">
-    <img src={recommendation.art} alt="In The Aeroplane Over The Sea" />
+    <a href={recommendation.album_link} target="_blank">
+      <img src={recommendation.album_art} alt="In The Aeroplane Over The Sea" />
+    </a>
   </figure>
   <div>
     <p>
-      <strong>{recommendation.name}</strong> recommended <strong
-        ><a href="/">{recommendation.title}</a>
+      <strong>{recommendation.name}</strong> recommended <strong><a href={recommendation.track_link} target="_blank">{recommendation.track}</a>
       </strong>
-      by <strong><a href="/">{recommendation.band}</a></strong>
+      by <strong><a href={recommendation.band_link} target="_blank">{recommendation.band}</a></strong>
     </p>
   </div>
 </li>

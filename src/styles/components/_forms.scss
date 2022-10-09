@@ -1,0 +1,84 @@
+@import '../mixins/index';
+
+form {
+  @include stack;
+  label {
+    display: block;
+    font-weight: 700;
+  }
+  input[type='text'] {
+    margin-block-start: 0.5rem;
+    border: none;
+    border-bottom: 4px solid var(--primary-color);
+    padding-block: 0.25rem;
+    padding-inline: 0.5rem;
+    font-size: var(--step-1);
+  }
+  fieldset {
+    legend {
+      font-weight: 700;
+    }
+    margin-block-start: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
+    gap: 1rem;
+    border: none;
+    padding: 0;
+  }
+  label:has(input[type='radio']) {
+    font-weight: 400;
+    padding: 0.5rem;
+    background: white;
+    display: flex;
+    gap: 0.5rem;
+    border-radius: 0.85rem;
+    cursor: pointer;
+    figure {
+      width: 100px;
+      border-radius: 0.65rem;
+      overflow: hidden;
+      img {
+        height: 100%;
+        width: 100%;
+        aspect-ratio: 1;
+      }
+    }
+    dt {
+      font-weight: 700;
+    }
+    dl {
+      font-size: var(--step--1);
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+    }
+    input {
+      position: absolute;
+      opacity: 0;
+    }
+  }
+  label:has(input:checked) {
+    outline: 3px solid var(--primary-color);
+  }
+
+  .form-actions {
+    padding-block: 1rem;
+    display: flex;
+    gap: 1rem;
+    button{
+      font-size: var(--step-0);
+      text-transform: uppercase;
+    }
+  }
+
+  .input-group{
+    display:flex;
+    align-items: center;
+    gap: 1rem;
+    button{
+      margin-block-start: 8px;
+      height:100%;
+      border: 4px solid var(--primary-color);
+    }
+  }
+}
