@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, reactive } from "vue";
+import { onMounted, reactive } from "vue";
 const state = reactive({
   accessToken: null,
   loading: true
