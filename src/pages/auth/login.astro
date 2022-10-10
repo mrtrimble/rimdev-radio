@@ -1,4 +1,5 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import Auth from '../../components/Auth.vue';
 
 const spotifyClientId = import.meta.env.SPOTIFY_CLIENT_ID;
@@ -8,6 +9,9 @@ const mode = import.meta.env.MODE;
 const scope = 'streaming \
                user-read-email \
                user-read-private \
+               playlist-read-private \
+               playlist-read-collaborative \
+               playlist-modify-private \
                playlist-modify-public';
 
 const randomString = (length) => {
@@ -32,4 +36,13 @@ const auth_query_parameters = new URLSearchParams({
 });
 ---
 
-<Auth authQueryParameters={auth_query_parameters.toString()} client:load />
+<Layout title="Authenticating...">
+  <section class="authentication">
+    <div class="container">
+      <header>
+        <h2>Authenticating...</h2>
+      </header>
+      <Auth authQueryParameters={auth_query_parameters.toString()} client:load />
+    </div>
+  </section>
+</Layout>

@@ -1,9 +1,15 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import Callback from '../../components/Callback.vue';
-
 ---
 
-<h1>
-  You are logged in!
-</h1>
-<Callback client:load />
+<Layout title="Authenticating...">
+  <section class="authentication">
+    <div class="container">
+      <header>
+        <h2>Authenticating...</h2>
+      </header>
+      <Callback client:load />
+    </div>
+  </section>
+</Layout>
