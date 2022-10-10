@@ -3,10 +3,55 @@
   --primary-color-light: #{lighten(#31225d, 10%)};
 }
 
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #453181 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 16px;
+  padding-inline-start: 1rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparentize($color: #453181, $amount: 0.75);
+  border-radius: 10px;
+  backdrop-filter: blur(5px);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #453181;
+  border-radius: 10px;
+}
+
 body {
   background-color: snow;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-image: linear-gradient(
+    0deg,
+    hsl(255deg 46% 25%) 0%,
+    hsl(274deg 34% 31%) 20%,
+    hsl(290deg 24% 37%) 29%,
+    hsl(308deg 19% 45%) 36%,
+    hsl(321deg 18% 54%) 41%,
+    hsl(331deg 21% 63%) 47%,
+    hsl(339deg 25% 72%) 54%,
+    hsl(347deg 28% 81%) 63%,
+    hsl(354deg 33% 90%) 76%,
+    hsl(0deg 100% 99%) 100%
+  );
   color: #333;
-  main{
-    padding-block-end: 400px;
+  main {
+    // position: fixed;
+    width: 100vw;
+    margin-inline: auto;
+    // bottom: 0;
+    
   }
+  
 }

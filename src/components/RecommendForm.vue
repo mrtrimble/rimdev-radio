@@ -116,6 +116,7 @@ const handleReset = () => {
           id="song-search"
           name="song-search"
           v-model="search"
+          @key.enter="handleSearch"
         />
         <button type="button" @click="handleSearch">
           <svg

@@ -2,6 +2,9 @@
 
 form {
   @include stack;
+  height: 60vh;
+  overflow: auto;
+  padding-inline-end: 1rem;
   label {
     display: block;
     font-weight: 700;
@@ -15,21 +18,27 @@ form {
     font-size: var(--step-1);
   }
   fieldset {
-    legend {
-      font-weight: 700;
-    }
     margin-block-start: 1rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20ch, 1fr));
     gap: 1rem;
     border: none;
     padding: 0;
+    legend {
+      font-weight: 700;
+    }
   }
   label:has(input[type='radio']) {
+    margin-inline-start: 4px;
+    outline: 3px solid transparent;
+    transition: 0.25s ease;
     font-weight: 400;
     padding: 0.5rem;
-    background: white;
-    display: flex;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: fit-content(15ch) 1fr;
     gap: 0.5rem;
     border-radius: 0.85rem;
     cursor: pointer;
@@ -45,12 +54,26 @@ form {
     }
     dt {
       font-weight: 700;
+      width: 250px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     dl {
       font-size: var(--step--1);
       display: flex;
       flex-flow: column;
       justify-content: center;
+      width: 250px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    dd {
+      width: 250px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     input {
       position: absolute;
@@ -59,25 +82,27 @@ form {
   }
   label:has(input:checked) {
     outline: 3px solid var(--primary-color);
+    background: white;
   }
 
   .form-actions {
     padding-block: 1rem;
     display: flex;
     gap: 1rem;
-    button{
+    button {
       font-size: var(--step-0);
       text-transform: uppercase;
     }
   }
 
-  .input-group{
-    display:flex;
+  .input-group {
+    display: flex;
+    flex-wrap: wrap;
     align-items: center;
     gap: 1rem;
-    button{
+    button {
       margin-block-start: 8px;
-      height:100%;
+      height: 100%;
       border: 4px solid var(--primary-color);
     }
   }
