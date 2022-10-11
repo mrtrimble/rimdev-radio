@@ -1,24 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro';
+import RequestForm from '../components/RequestForm.vue';
 ---
+
 <Layout title="Request Access">
   <div class="request container">
     <header>
       <h2>Request Access</h2>
-      <form name="request" method="POST" data-netlify="true">
-        <input type="hidden" name="form-name" value="request" />
-        <label for="name">
-          Name
-        </label>
-        <input type="text" id="name" name="name" />
-        <label for="email">
-          Email
-        </label>
-        <input type="text" id="email" name="email" />
-        <section class="form-actions">
-          <button type="submit">Request</button>
-        </section>
-      </form>
+      <RequestForm client:load />
     </header>
   </div>
 </Layout>
