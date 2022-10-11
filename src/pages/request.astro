@@ -6,6 +6,7 @@ import Layout from "../layouts/Layout.astro";
     <header>
       <h2>Request Access</h2>
       <form name="request" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="request" />
         <label for="name">
           Name
         </label>
