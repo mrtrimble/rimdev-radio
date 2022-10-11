@@ -1,4 +1,5 @@
 ---
+import { Image } from '@astrojs/image/components';
 export interface Props {
   recommendation: {
     name: string;
@@ -18,12 +19,21 @@ const { recommendation } = Astro.props;
 <li class="recommendation">
   <figure class="recommendation-art">
     <a href={recommendation.album_link} target="_blank">
-      <img src={recommendation.album_art} alt="In The Aeroplane Over The Sea" />
+      <Image 
+        src={recommendation.album_art} 
+        alt={recommendation.album} 
+        width="150px" 
+        height="150px" 
+        format="webp"
+        quality={75}
+        loading="eager"
+      />
     </a>
   </figure>
   <div>
     <p>
-      <strong>{recommendation.name}</strong> recommended <strong><a href={recommendation.track_link} target="_blank">{recommendation.track}</a>
+      <strong>{recommendation.name}</strong> recommended <strong
+        ><a href={recommendation.track_link} target="_blank">{recommendation.track}</a>
       </strong>
       by <strong><a href={recommendation.band_link} target="_blank">{recommendation.band}</a></strong>
     </p>
