@@ -18,7 +18,7 @@ const { recommendation } = Astro.props;
 <li class="recommendation">
   <figure class="recommendation-art">
     <a href={recommendation.album_link} target="_blank">
-      <img src={recommendation.album_art} alt="In The Aeroplane Over The Sea" />
+      <img src={recommendation.album_art} alt={recommendation.album} />
     </a>
   </figure>
   <div>
