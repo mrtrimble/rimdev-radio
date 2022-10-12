@@ -94,7 +94,7 @@ const handleReset = () => {
 </script>
 
 <template>
-  <form @submit="handleSubmit" @reset="handleReset">
+  <form v-if="access_token" @submit="handleSubmit" @reset="handleReset">
     <section class="user-info">
       <label for="team-member">Team Member Name</label>
       <input
@@ -170,4 +170,7 @@ const handleReset = () => {
       <button type="reset">Cancel</button>
     </section>
   </form>
+  <div v-else>
+    You do not have access to add songs.
+  </div>
 </template>

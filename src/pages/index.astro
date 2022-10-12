@@ -17,7 +17,6 @@ let { data: recommendations, error } = await supabase.from('recommendations').se
     <div class="container">
       <header>
         <h2>Team Recommendations</h2>
-        <RecommendButton client:load />
       </header>
       <ul>
         {
