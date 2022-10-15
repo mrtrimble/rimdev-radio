@@ -1,13 +1,14 @@
 :root {
   --primary-color: #31225d;
   --primary-color-light: #{lighten(#31225d, 10%)};
+  --button-color: #7254a2;
 }
 
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {
   scrollbar-width: auto;
-  scrollbar-color: #453181 #ffffff;
+  scrollbar-color: rgba(255,255,255, 0.6);
 }
 
 /* Chrome, Edge, and Safari */
@@ -17,13 +18,14 @@
 }
 
 *::-webkit-scrollbar-track {
-  background: transparentize($color: #453181, $amount: 0.75);
-  border-radius: 10px;
+  background: rgba(255,255,255, 0.6);
   backdrop-filter: blur(5px);
+  border-radius: 10px;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #453181;
+  background-color: #7254a2;
+  // outline: 1px solid snow;
   border-radius: 10px;
 }
 
@@ -51,7 +53,5 @@ body {
     width: 100vw;
     margin-inline: auto;
     // bottom: 0;
-    
   }
-  
 }
